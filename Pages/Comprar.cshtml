@@ -1,0 +1,74 @@
+@page
+@model ComprarModel
+@{
+    ViewData["Title"] = "";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container row">
+    <div class="col-6">
+        <h2 class="text-info"> Subastas Disponibles </h2>
+    </div>
+    <br> 
+    <br>
+    <br>
+ <!--   <div class="col-6 tex-right">
+        <a asp-page="Vender" class="btn btn-primary"> Vender un Objeto</a>
+    </div>
+</div>-->
+<form>
+    <p>
+       <h4> Categoria: 
+       <select class="custom-select col-md-5 mb-3 " asp-for="SearchString"  >
+                  <option value="">Opciones</option>
+                  <option>Equipos de Computo</option>
+                  <option>Celulares</option>
+                  <option>Electrodomesticos</option>
+                  <option>Vehiculos</option>
+                  <option>Recursos academicos</option>
+                  <option>Otros</option>
+                </select>
+        <input class= "col-md-3 mb-3"  type="submit" value="Buscar" /></h4>
+    </p>
+</form>
+
+  @if (Model.Subastar.Count()>0){
+<div class="container ">
+      
+      
+       @foreach (var item in Model.Subastar)
+         {    
+         <div class="card-deck mb-1 text-center">
+        <div class="card mb-1 box-shadow text-center">
+          <div class="card-header bg-info text-white">
+            <h2 class="my-0 font-weight-bold"><th>@Html.DisplayFor( m=> item.NombreArticulo)</th></h2>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$ <th>@Html.DisplayFor( m=> item.Precio)</th></h1>
+            <ul class="list-unstyled mt-3 mb-1">
+              <h3 class ="font-italic">Categoria: <th>@Html.DisplayFor( m=> item.Categoria)</th></h3>
+               <h4 class ="font-italic"><th>@Html.DisplayFor( m=> item.DescripcionArticulo)</th></h4>
+              <p class ="font-italic"><th>@Html.DisplayFor( m=> item.NombreUsuario)</th> <th>@Html.DisplayFor( m=> item.ApellidoUsuario)</th></p>
+              <li><th>@Html.DisplayFor( m=> item.FechaSubasta)</th></li>
+              <li><th>@Html.DisplayFor( m=> item.FechaFinSubasta)</th></li>
+              <h4>Ofertas: <th>@Html.DisplayFor( m=> item.Oferta)</th></h4>
+            </ul>
+            
+            <button type="button" class="btn btn-lg btn-lg btn-primary">
+              <a class="nav-link text-white" asp-page="Ofert">Realiza una oferta</a>
+            </button> 
+          </div>
+         </div>
+         </div>  
+         }  
+                   
+        
+       </div>  
+    
+  }
+else
+{
+    <p>No hay articulos Disponibles</p>
+}
+
+

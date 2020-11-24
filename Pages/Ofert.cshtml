@@ -1,0 +1,53 @@
+@page
+@model OfertModel
+  
+@{   ViewData["Title"] = "";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+ 
+
+    <body class="bg-light">
+   
+
+        <div class="container">
+          <div class="py-5 text-center">
+            <img class="rounded-circle" src="https://www.quebueno.es/blog/wp-content/uploads/2015/06/subastas-iberia.jpg?c93551" alt="" width="350" height="300">
+            <h2 style="padding: 10px;">SUBASTAS USC</h2>
+            <p class="lead">Realiza una oferta por el articulo interesado, recuerda que debe ser superior al precio base del cliente.</p>
+          </div>
+
+          <h3 class="mb-1" style="padding: 10px;">Registra tu oferta</h3>
+
+         
+          
+          <form class="needs-validation" novalidate method="post">
+            <div asp-validation-summary ="ModelOnly" class="text-danger"></div>
+            <div class="row">
+            
+            <div class="col-md-6 mb-3">
+              <label asp-for ="Ofertar.Oferta"></label>
+              <input asp-for="Ofertar.Oferta" placeholder="$" class ="form-control"/>
+              <div class="">
+                <span asp-validation-for="Ofertar.Oferta" class="text-danger"></span>
+              </div>
+            </div>
+           
+            </div>
+           <br>
+            <div class="row">
+              <div class="col-md-3 mb-3"><a asp-page ="Comprar" class="btn btn- bg-success text-white btn-lg btn-block" type="submit">Atras</a></div>
+             <div class="col-md-3 mb-3"><input class="btn btn-primary btn-lg btn-block" type="submit" value="Registrar Oferta"/></div>
+           </div>
+          </form>
+ </body>
+<br>
+<br>

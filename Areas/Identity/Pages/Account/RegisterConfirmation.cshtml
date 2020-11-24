@@ -1,0 +1,22 @@
+@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Confirmacion de cuenta";
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p>
+     <a href="https://aka.ms/aspaccountconf"></a> 
+     <a id="confirm-link" class="btn btn- bg-primary text-white btn-lg btn-block" href="@Model.EmailConfirmationUrl">Haga clic aquí para confirmar su cuenta</a>
+</p>
+    }
+    else
+    {
+<p>
+        
+</p>
+    }
+}

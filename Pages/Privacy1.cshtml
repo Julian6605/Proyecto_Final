@@ -1,0 +1,72 @@
+﻿@page
+@model Privacy1Model
+@{
+    ViewData["Title"] = "";
+}
+
+<br>
+
+<div class="container row">
+    <div class="col-6">
+        <h2 class="text-info"> Subastar un Articulo</h2>
+        <p>Registre lo que desea Subastar.</p>
+    </div>
+    <div class="col-6 tex-right">
+        <a asp-page="crearSubastas" class="btn btn-primary"> Registrar un Objeto</a>
+    </div>
+</div>
+<br>
+
+
+@if (Model.Mensaje != null)
+{
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close"> 
+
+          <span aria-hidden="true">&times;</span>
+
+        </button>
+
+        @Model.Mensaje
+    </div>
+}
+
+<form method="POST">
+@if(Model.Subastar.Count() > 0){
+
+  <div class="container ">
+      
+      
+       @foreach (var item in Model.Subastar)
+         {    
+         <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow text-center">
+          <div class="card-header bg-info text-white">
+            <h4 class="my-0 font-weight-bold"><th>@Html.DisplayFor( m=> item.NombreArticulo)</th></h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$ <th>@Html.DisplayFor( m=> item.Precio)</th></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <p class ="font-italic"><th>@Html.DisplayFor( m=> item.DescripcionArticulo)</th></p>
+              <li><th>@Html.DisplayFor( m=> item.FechaSubasta)</th></li>
+              <li><th>@Html.DisplayFor( m=> item.FechaFinSubasta)</th></li>
+            </ul>
+            <td> <button asp-page-handler ="Delete" asp-route-id="@item.IdSubastas" onclick="return confirm('Esta seguro que desea borrar el registro')" class="btn btn-danger btn-sm">Borrar</button>
+                <a asp-route-id="@item.IdSubastas" asp-page="Edit" class="btn btn-success btn-sm"> Editar </a>
+            </td>
+            <br>
+         
+          </div>
+         </div>
+         </div> 
+         }  
+                   
+        
+       </div>  
+}
+else
+{
+    <p>No hay articulos Disponibles</p>
+}
+
+</form>

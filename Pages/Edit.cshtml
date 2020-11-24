@@ -1,0 +1,134 @@
+@page
+@model EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+ 
+
+  
+    <body class="bg-light">
+
+        <div class="container">
+          <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://www.usc.edu.co/images/logo.png" alt="" width="160" height="100">
+            <h2>Formulario</h2>
+            <p class="lead">Para lograr subastar tus artículos, primero debes realizar un registro con todos los datos del artículo que debes subastar, todos los campos que presenta el formulario son obligatorios, debe escoger una fecha de inicio de subasta y una fecha de finalidad, además se debe colocar una descripción del articulo y principalmente colocar un valor base para iniciar con el valor de su artículo a subastar.</p>
+          </div>
+
+          <h4 class="mb-1" style="padding: 20px;">Editasr la Inscripción del Articulo</h4>
+
+          <!--Ejercicio crud -->
+          
+          <form class="needs-validation" novalidate method="post">
+            <div asp-validation-summary ="ModelOnly" class="text-danger"></div>
+              <input type="hidden" asp-for="subastas.IdSubastas" >
+
+            <div class="row">
+              <!--Nombre Uusuario -->
+              <div class="col-md-6 mb-3">
+                <label asp-for ="subastas.NombreUsuario"></label> 
+                 <input asp-for="subastas.NombreUsuario" class="form-control form-control-lg">
+                <div class="">
+                <span asp-validation-for="subastas.NombreUsuario" class="text-danger"></span> 
+                </div>
+              </div>
+
+              <!--Apellido Uusuario -->
+              <div class="col-md-6 mb-3">
+                <label asp-for ="subastas.ApellidoUsuario"></label> 
+                <input asp-for="subastas.ApellidoUsuario" class="form-control form-control-lg">
+                <div class="">
+                <span asp-validation-for="subastas.ApellidoUsuario" class="text-danger"></span> 
+                </div>
+              </div>
+            </div>
+               <!--Nombre del articulo -->
+            <div class="mb-3">
+              <label asp-for ="subastas.NombreArticulo"></label>
+              <div class="input-group">
+                <div class="input-group-prepend">             
+                </div>
+                <input asp-for="subastas.NombreArticulo" class ="form-control"/>
+                <div class="" style="width: 100%;">
+                  <span asp-validation-for="subastas.NombreArticulo" class="text-danger"></span>
+                </div>
+              </div>
+            </div>
+             <!--descripcion del articulo -->
+            <div class="mb-3">
+              <label asp-for ="subastas.DescripcionArticulo"></label>
+              <input asp-for="subastas.DescripcionArticulo" class ="form-control"/>
+              <div class="">
+                <span asp-validation-for="subastas.DescripcionArticulo" class="text-danger"></span>
+              </div>
+            </div>
+               <!--categoria del articulo -->
+            <div class="mb-3">
+              <label asp-for="subastas.Categoria"></label>
+                <select class="custom-select d-block w-100" asp-for="subastas.Categoria">
+                  <option value="">Opciones</option>
+                  <option>Equipos de Computo</option>
+                  <option>Celulares</option>
+                  <option>Electrodomesticos</option>
+                  <option>Vehiculos</option>
+                  <option>Recursos academicos</option>
+                  <option>Otros</option>
+                </select>
+                <div class="">
+                  <span asp-validation-for="subastas.Categoria" class="text-danger"></span> 
+                </div>  
+            </div>
+                 <!--Precio del articulo -->
+            <div class="mb-3">
+              <label asp-for ="subastas.Precio"></label>
+              <input asp-for="subastas.Precio" placeholder="$" class ="form-control"/>
+              <div class="">
+                <span asp-validation-for="subastas.Precio" class="text-danger"></span>
+              </div>
+            </div>
+              <!--Fecha de Inicio de susbasta-->
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label asp-for ="subastas.FechaSubasta"></label>
+                <input asp-for="subastas.FechaSubasta" class ="form-control"
+                 value="subastas.FechaSubasta"
+                 min="2020-01-01">
+                </select>
+                <div class="">
+                  <span asp-validation-for="subastas.FechaSubasta" class="text-danger"></span>
+                </div>
+              </div>
+              <!--Fecha de finalizacion de susbasta-->
+              <div class="col-md-6 mb-3">
+                <label asp-for ="subastas.FechaFinSubasta"></label>
+                <input asp-for="subastas.FechaFinSubasta" class ="form-control"
+                value="2020-11-01"
+                min="2020-01-01" max="2025-12-31">
+                <div class="">
+                  <span asp-validation-for="subastas.FechaFinSubasta" class="text-danger"></span>
+                </div>
+              </div>
+             
+            </div>
+           <br>
+            <div class="row">
+              <div class="col-md-6 mb-3"><a asp-page ="Privacy1" class="btn btn- bg-success text-white btn-lg btn-block" type="submit">Atras</a></div>
+             <div class="col-md-6 mb-3"><input class="btn btn-primary btn-lg btn-block" type="submit" value="Editar Datos"/></div>
+           </div>
+          </form>
+<br>
+<br>
+ 
+  </body>
+  @section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  }
+

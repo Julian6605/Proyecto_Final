@@ -17,4 +17,4 @@ A parte de crear las clases con los modelos de datos, estas clases deben inicial
 También se creó una validación de autenticación para los usuarios, esto se logra a partir de la creación de los servicios que se agregan en ConfigureServices. El patrón típico es llamar a todos los Add{Service}métodos y luego llamar a todos los services.Configure{Service}métodos.
 
 
-<img src='https://raw.githubusercontent.com/Julian6605/imagenes/main/ARQUITECTURA.PNG' alt='' height='100'>
+<img src='https://raw.githubusercontent.com/Julian6605/imagenes/main/ARQUITECTURA.PNG' alt='' height='400'>
